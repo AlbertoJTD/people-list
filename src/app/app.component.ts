@@ -12,10 +12,8 @@ export class AppComponent {
     new Persona('John', 'Wick'),
     new Persona('Jonny', 'Cage')
   ];
-  nombreInput: string = '';
-  apellidoInput: string = '';
-
-  addPerson(): void {
-    this.personas.push(new Persona(this.nombreInput, this.apellidoInput))
+  
+  personaAgregada(persona: Persona): void {
+    this.personas.push(persona);
   }
 }
