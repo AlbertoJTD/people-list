@@ -9,11 +9,11 @@ import { Persona } from '../persona.model';
 export class FormularioComponent {
   @Output() personaCreada = new EventEmitter<Persona>();
 
-  nombreInput: string = '';
-  apellidoInput: string = '';
+  // nombreInput: string = '';
+  // apellidoInput: string = '';
 
-  addPerson(): void {
-    let newPerson = new Persona(this.nombreInput, this.apellidoInput);
+  addPerson(nombre: HTMLInputElement, apellido: HTMLInputElement): void {
+    let newPerson = new Persona(nombre.value, apellido.value);
     this.personaCreada.emit(newPerson);
   }
 }
