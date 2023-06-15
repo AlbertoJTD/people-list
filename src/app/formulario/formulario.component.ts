@@ -16,7 +16,11 @@ export class FormularioComponent {
   @ViewChild('apellidoRef') apellido: ElementRef;
   
   // Injection of services
-  constructor(private logginService: LogginService, private personasService: PersonasService) { }
+  constructor(private logginService: LogginService, private personasService: PersonasService) {
+    this.personasService.saludar.subscribe((indice: number) => 
+      alert(`El indice es: ${indice}`)
+    );
+  }
 
   addPerson(): void {
     let newPerson = new Persona(this.nombre.nativeElement.value, this.apellido.nativeElement.value);
