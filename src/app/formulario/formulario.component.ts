@@ -6,7 +6,7 @@ import { LogginService } from '../LogginService.service';
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
   styleUrls: ['./formulario.component.css'],
-  providers: [LogginService]
+  // providers: [LogginService]
 })
 export class FormularioComponent {
   @Output() personaCreada = new EventEmitter<Persona>();

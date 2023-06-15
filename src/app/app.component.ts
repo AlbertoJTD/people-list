@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Persona } from './persona.model';
+import { LogginService } from './LogginService.service';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +13,11 @@ export class AppComponent {
     new Persona('John', 'Wick'),
     new Persona('Jonny', 'Cage')
   ];
+
+  constructor(private logginService: LogginService) { }
   
   personaAgregada(persona: Persona): void {
+    this.logginService.enviarMensajeAConsola('Hello from app.component')
     this.personas.push(persona);
   }
 }
