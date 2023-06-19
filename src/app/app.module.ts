@@ -8,12 +8,14 @@ import { FormularioComponent } from './formulario/formulario.component';
 import { LogginService } from './LogginService.service';
 import { PersonasService } from './personas.service';
 import { AppRoutingModule } from './app-routing.module';
+import { PersonasComponent } from './personas/personas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonaComponent,
-    FormularioComponent
+    FormularioComponent,
+    PersonasComponent
   ],
   imports: [
     BrowserModule,
