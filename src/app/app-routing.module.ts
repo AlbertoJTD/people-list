@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { PersonasComponent } from './personas/personas.component';
 import { FormularioComponent } from './personas/formulario/formulario.component';
+import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   { path: '', component: PersonasComponent },
@@ -10,6 +11,7 @@ const routes: Routes = [
     { path: 'agregar',  component: FormularioComponent },
     { path: ':id',  component: FormularioComponent },
   ]},
+  { path: '**', component: ErrorComponent }
 ];
 
 @NgModule({
