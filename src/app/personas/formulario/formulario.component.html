@@ -1,5 +1,5 @@
 <div class="box">
-  <form action="" class="item" #f="ngForm" (ngSubmit)="f.form.valid && addPerson()">
+  <form action="" class="item" #f="ngForm" (ngSubmit)="f.form.valid && savePerson()">
     <input type="text" id="nombre" name="nombre" placeholder="Name" class="" [(ngModel)]="nombreInput" required>
     
     <input type="text" id="apellido" name="apellido" placeholder="Last name" class="" [(ngModel)]="apellidoInput" required>
