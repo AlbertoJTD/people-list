@@ -40,7 +40,7 @@ export class FormularioComponent implements OnInit {
       // let persona: Persona = this.personasService.findPerson(this.index);
       this.personasService.editPersona(this.index, person);
     } else {
-      this.personasService.agregarPersona(person);
+      this.personasService.addPersona(person);
     }
 
     this.router.navigate(['personas']); // regresar a la ruta 'personas'
