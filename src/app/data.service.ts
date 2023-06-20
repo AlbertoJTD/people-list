@@ -10,7 +10,7 @@ export class DataService {
   constructor(private httpClient: HttpClient) { }
 
   savePeople(personas: Persona[]): void {
-    this.httpClient.put(this.firebaseURL, personas)
+    this.httpClient.put(`${this.firebaseURL}/data.json`, personas)
       .subscribe(
         response =>  console.log(response),
         error => console.log('Error while saving people')
@@ -18,6 +18,14 @@ export class DataService {
   }
 
   loadData(): Observable<any> {
-    return this.httpClient.get(this.firebaseURL);
+    return this.httpClient.get(`${this.firebaseURL}/data.json`);
+  }
+
+  editPersona(index: number, persona: Persona): void {
+    let url: string = `${this.firebaseURL}/data/${index}.json`;
+    this.httpClient.put(url, persona).subscribe(
+      response => console.log(response),
+      error => console.log(error)
+    );
   }
 }
