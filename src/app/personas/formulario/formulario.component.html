@@ -1,7 +1,9 @@
-<form action="" class="item">
-  <input type="text" id="nombre" name="nombre" placeholder="Name" class="" [(ngModel)]="nombreInput">
+<div class="box">
+  <form action="" class="item" #f="ngForm" (ngSubmit)="f.form.valid && addPerson()">
+    <input type="text" id="nombre" name="nombre" placeholder="Name" class="" [(ngModel)]="nombreInput" required>
+    
+    <input type="text" id="apellido" name="apellido" placeholder="Last name" class="" [(ngModel)]="apellidoInput" required>
   
-  <input type="text" id="apellido" name="apellido" placeholder="Last name" class="" [(ngModel)]="apellidoInput">
-
-  <button type="submit" class="" (click)="addPerson()">+</button>
-</form>
+    <button type="submit" style="cursor: pointer;">+</button>
+  </form>
+</div>

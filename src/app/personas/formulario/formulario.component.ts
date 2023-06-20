@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Persona } from '../../persona.model';
 import { LogginService } from '../../LogginService.service';
 import { PersonasService } from '../../personas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulario',
@@ -13,7 +14,7 @@ export class FormularioComponent {
   apellidoInput: string = '';
   
   // Injection of services
-  constructor(private logginService: LogginService, private personasService: PersonasService) {
+  constructor(private logginService: LogginService, private personasService: PersonasService, private router: Router) {
     this.personasService.saludar.subscribe((indice: number) => 
       alert(`El indice es: ${indice}`)
     );
@@ -22,5 +23,7 @@ export class FormularioComponent {
   addPerson(): void {
     let newPerson = new Persona(this.nombreInput, this.apellidoInput);
     this.personasService.agregarPersona(newPerson);
+
+    this.router.navigate(['personas']);
   }
 }
