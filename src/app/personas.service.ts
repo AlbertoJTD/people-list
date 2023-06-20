@@ -5,17 +5,21 @@ import { DataService } from "./data.service";
 
 @Injectable() // Indicar que se usara un servicio dentro del servicio 'PersonasService' se usara el servicio 'LogginService'
 export class PersonasService {
-  personas: Persona[] = [
-    new Persona('John', 'Wick'),
-    new Persona('Jonny', 'Cage')
-  ];
+  personas: Persona[] = [];
 
   saludar = new EventEmitter<number>();
 
   constructor(private logginService: LogginService, private dataService: DataService) { }
 
+  setPersonas(personas: Persona[]) {
+    this.personas = personas;
+  }
+
   addPersona(persona: Persona): void {
     this.logginService.enviarMensajeAConsola("Agregando persona: " + persona.nombre);
+    if (this.personas == null) {
+      this.personas = [];
+    }
     this.personas.push(persona);
 
     this.dataService.savePeople(this.personas);
@@ -34,5 +38,9 @@ export class PersonasService {
 
   deletePersona(index: number): void {
     this.personas.splice(index, 1);
+  }
+
+  getPersonas() {
+    return this.dataService.loadData();
   }
 }

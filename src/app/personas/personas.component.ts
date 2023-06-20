@@ -17,7 +17,10 @@ export class PersonasComponent implements OnInit {
  
   ngOnInit(): void {
     // Inicializar arreglo de personas
-    this.personas = this.personasService.personas;
+    this.personasService.getPersonas().subscribe((personas: Persona[]) => {
+      this.personas = personas;
+      this.personasService.setPersonas(personas);
+    });
   }
 
   add(): void {
