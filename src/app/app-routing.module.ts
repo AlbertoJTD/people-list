@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'personas',  component: PersonasComponent, children: [
     { path: 'agregar',  component: FormularioComponent },
     { path: ':id',  component: FormularioComponent },
-  ]}
+  ]},
 ];
 
 @NgModule({
