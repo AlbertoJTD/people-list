@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class FormularioComponent implements OnInit {
   nombreInput: string = '';
   apellidoInput: string = '';
-  index: number = 0;
+  index: number;
   
   // Injection of services
   constructor(private logginService: LogginService, private personasService: PersonasService, private router: Router, private route: ActivatedRoute) {
@@ -41,11 +41,14 @@ export class FormularioComponent implements OnInit {
       this.personasService.agregarPersona(person);
     }
 
-    // this.nombreInput = persona.nombre;
-    // this.apellidoInput = persona.apellido;
-
-    // this.personasService.agregarPersona(newPerson);
-
     this.router.navigate(['personas']); // regresar a la ruta 'personas'
+  }
+
+  delete(index: number): void {
+    if (this.index != null) {
+      this.personasService.deletePersona(index);
+    }
+    
+    this.router.navigate(['personas']);
   }
 }

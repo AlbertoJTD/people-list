@@ -87,3 +87,15 @@ input[type="text"]:focus {
   color: grey;
   opacity: 1;
 }
+
+.buttonRed {
+  min-height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border-color: transparent;
+  background-color: red;
+  color: #fff;
+  font-size: 30px;
+  padding-bottom: 6px;
+  border-width: 0;
+}

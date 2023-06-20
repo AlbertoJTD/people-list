@@ -28,4 +28,8 @@ export class PersonasService {
     editPersona.nombre = persona.nombre;
     editPersona.apellido = persona.apellido;
   }
+
+  deletePersona(index: number): void {
+    this.personas.splice(index, 1);
+  }
 }
