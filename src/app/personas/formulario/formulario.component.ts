@@ -13,6 +13,7 @@ export class FormularioComponent implements OnInit {
   nombreInput: string = '';
   apellidoInput: string = '';
   index: number;
+  editMode: number;
   
   // Injection of services
   constructor(private logginService: LogginService, private personasService: PersonasService, private router: Router, private route: ActivatedRoute) {
@@ -23,8 +24,9 @@ export class FormularioComponent implements OnInit {
 
   ngOnInit(): void {
     this.index = this.route.snapshot.params['id'];
+    this.editMode = +this.route.snapshot.queryParams['editMode']; // convert string type param to number
 
-    if (this.index) {
+    if (this.editMode == 1) {
       let persona: Persona = this.personasService.findPersona(this.index);
       this.nombreInput = persona.nombre;
       this.apellidoInput = persona.apellido;
@@ -34,7 +36,7 @@ export class FormularioComponent implements OnInit {
   savePerson(): void {
     let person = new Persona(this.nombreInput, this.apellidoInput);
     
-    if (this.index) {
+    if (this.editMode == 1) {
       // let persona: Persona = this.personasService.findPerson(this.index);
       this.personasService.editPersona(this.index, person);
     } else {
@@ -45,10 +47,10 @@ export class FormularioComponent implements OnInit {
   }
 
   delete(index: number): void {
-    if (this.index != null) {
+    if (this.editMode == 1) {
       this.personasService.deletePersona(index);
     }
-    
+
     this.router.navigate(['personas']);
   }
 }
