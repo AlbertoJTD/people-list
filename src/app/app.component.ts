@@ -1,10 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent{
+export class AppComponent implements OnInit{
   title = 'People list';
+  apiKeyFirebase: string = 'key';
+  authDomainFirebase: string = 'domain';
+
+  constructor() { }
+
+  ngOnInit(): void {
+    firebase.initializeApp({
+      apiKey: this.apiKeyFirebase,
+      authDomain: this.authDomainFirebase,
+    });
+  }
 }
