@@ -48,7 +48,6 @@ export class PersonasService {
 
   resetPositions(): void {
     if (this.personas != null) {
-      console.log('entra if');
       this.dataService.savePeople(this.personas);
     }
   }
