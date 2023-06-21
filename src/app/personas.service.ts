@@ -40,6 +40,17 @@ export class PersonasService {
 
   deletePersona(index: number): void {
     this.personas.splice(index, 1);
+    // this.dataService.deletePersona(index);
+    
+    // Reset positions
+    this.resetPositions();
+  }
+
+  resetPositions(): void {
+    if (this.personas != null) {
+      console.log('entra if');
+      this.dataService.savePeople(this.personas);
+    }
   }
 
   getPersonas() {

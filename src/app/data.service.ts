@@ -28,4 +28,12 @@ export class DataService {
       error => console.log(error)
     );
   }
+
+  deletePersona(index: number): void {
+    let url: string = `${this.firebaseURL}/data/${index}.json`;
+    this.httpClient.delete(url).subscribe(
+      response => console.log(response),
+      error => console.log(error)
+    );
+  }
 }
