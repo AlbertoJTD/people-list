@@ -11,7 +11,8 @@ export class DataService {
   constructor(private httpClient: HttpClient, private loginService: LoginService) { }
 
   savePeople(personas: Persona[]): void {
-    this.httpClient.put(`${this.firebaseURL}/data.json`, personas)
+    const token = this.loginService.getIdToken();
+    this.httpClient.put(`${this.firebaseURL}/data.json?auth=${token}`, personas)
       .subscribe(
         response =>  console.log(response),
         error => console.log('Error while saving people')
@@ -24,7 +25,8 @@ export class DataService {
   }
 
   editPersona(index: number, persona: Persona): void {
-    let url: string = `${this.firebaseURL}/data/${index}.json`;
+    const token = this.loginService.getIdToken();
+    let url: string = `${this.firebaseURL}/data/${index}.json?auth=${token}`;
     this.httpClient.put(url, persona).subscribe(
       response => console.log(response),
       error => console.log(error)
@@ -32,7 +34,8 @@ export class DataService {
   }
 
   deletePersona(index: number): void {
-    let url: string = `${this.firebaseURL}/data/${index}.json`;
+    const token = this.loginService.getIdToken();
+    let url: string = `${this.firebaseURL}/data/${index}.json?auth=${token}`;
     this.httpClient.delete(url).subscribe(
       response => console.log(response),
       error => console.log(error)
